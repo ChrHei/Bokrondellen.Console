@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<artikelregister>
+  <artikel artikelnummer="9789129677478">
+    <!--<titel>Emil och soppskålen 130709:002</titel>
+    <saljperiod>2011 Sommar</saljperiod>
+    <sprak>swe</sprak>-->
+    <aldersgrupp>3-6</aldersgrupp>
+  </artikel>
+  <artikel artikelnummer="9789129680010" />
+  <!--<artikel artikelnummer="artnr2">
+    <distributor_id>1394</distributor_id>
+  </artikel>-->
+</artikelregister>
