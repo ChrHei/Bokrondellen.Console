@@ -37,9 +37,9 @@ namespace Bokrondellen.Initialization
         private static readonly ILog Logger = LogManager.GetLogger(typeof(InitializeFramework));
         private static string _connectionString;
 
-        public static void InitializeContext()
+        public static void Initialize()
         {
-            Logger.Debug("Start context initialization");
+            Logger.Debug("Start initialization.");
 
             if (string.IsNullOrEmpty(GetConnectionString()))
             {
@@ -48,8 +48,6 @@ namespace Bokrondellen.Initialization
             }
 
             Logger.Debug(string.Format("Connection string: '{0}'", GetConnectionString()));
-
-            //HttpContext.Current = new HttpContext(new HttpRequest("", "http://bokrondellen.local/", ""), new HttpResponse(new StringWriter()));
 
             InitializeServiceLocator();
 
@@ -70,7 +68,7 @@ namespace Bokrondellen.Initialization
             OrderContext.MetaDataContext = new MetaDataContext(GetConnectionString());
             MetaDataContext.DefaultCurrent = new MetaDataContext(GetConnectionString());
 
-            Logger.Debug("End context initialization");
+            Logger.Debug("Ended initialization.");
         }
 
         private static void InitializeServiceLocator()

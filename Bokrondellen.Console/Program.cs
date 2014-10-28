@@ -12,7 +12,12 @@ namespace Bokrondellen.Console
         private readonly static Dictionary<string, string> Args = new Dictionary<string, string>();
         static void Main(string[] args)
         {
+            Initialize(args);
+        }
 
+        private static void Initialize(string[] args)
+        {
+            ParseArgs(args);
         }
 
         static void ParseArgs(string[] args)
