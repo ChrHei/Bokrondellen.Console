@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bokrondellen.Initialization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,7 @@ namespace Bokrondellen.Console
         private static void Initialize(string[] args)
         {
             ParseArgs(args);
+            InitializeFramework.Initialize();
         }
 
         static void ParseArgs(string[] args)
