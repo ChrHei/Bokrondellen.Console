@@ -129,7 +129,7 @@ namespace Bokrondellen.Console
 
                     IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
 
-                    logger.InfoFormat("Saved excluded market(s) for {0}{1}:\t{2}", 
+                    logger.InfoFormat("Saved excluded market(s) for {0} {1}:\t{2}", 
                         entry.ID, 
                         entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"],
                         string.Join(", ", disabledMarkets.Select(i => i.Value).ToArray()));
