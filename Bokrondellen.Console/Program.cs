@@ -113,26 +113,44 @@ namespace Bokrondellen.Console
 
                 Entries entries = CatalogContext.Current.GetCatalogEntries(catalogName, node.ID);
 
-                System.Console.WriteLine("Found {0} entries in node {1}", entries.Entry.Length, node.Name);
+                int totalEntryCount = entries.Entry.Length;
+                int entryCount = 0;
+
+                System.Console.WriteLine("Found {0} entries in node {1}", totalEntryCount, node.Name);
 
                 foreach (Entry entry in entries.Entry)
                 {
-                    logger.DebugFormat("Loading meta object for entry\t{0}\t{1}", entry.ID, entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"]);
+                    entryCount++;
+                    logger.DebugFormat("Loading meta object for entry {0}/{1}\t{2}\t{3}", 
+                        entryCount,
+                        totalEntryCount,
+                        entry.ID, 
+                        entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"]);
+                    
                     MetaObject metaObj = MetaObject.Load(CatalogContext.MetaDataContext, entry.CatalogEntryId, metaClass) as MetaObject;
 
-                    metaObj.Modified = DateTime.UtcNow;
-                    metaObj["_ExcludedCatalogEntryMarkets"] = disabledMarkets;
+                    if (metaObj != null)
+                    {
+                        metaObj.Modified = DateTime.UtcNow;
+                        metaObj["_ExcludedCatalogEntryMarkets"] = disabledMarkets;
 
-                    metaObj.AcceptChanges(CatalogContext.MetaDataContext);
+                        metaObj.AcceptChanges(CatalogContext.MetaDataContext);
 
-                    CatalogEntryDto entryDto = CatalogContext.Current.GetCatalogEntryDto(metaObj.Id);
+                        CatalogEntryDto entryDto = CatalogContext.Current.GetCatalogEntryDto(metaObj.Id);
 
-                    IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
+                        IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
 
-                    logger.InfoFormat("Saved excluded market(s) for {0} {1}:\t{2}", 
-                        entry.ID, 
-                        entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"],
-                        string.Join(", ", disabledMarkets.Select(i => i.Value).ToArray()));
+                        logger.InfoFormat("Saved excluded market(s) for entry {0}/{1}\t{2}\t{3}\t{4}",
+                            entryCount,
+                            totalEntryCount,
+                            entry.ID,
+                            entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"],
+                            string.Join(", ", disabledMarkets.Select(i => i.Value).ToArray()));
+                    }
+                    else
+                    {
+                        logger.WarnFormat("Failed to load meta object for {0} {1}", entry.ID, entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"]);
+                    }
                 }
 
                 System.Console.WriteLine("Updated {0} entries in node {1}", entries.Entry.Length, node.Name);
