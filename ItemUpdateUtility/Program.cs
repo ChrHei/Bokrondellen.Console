@@ -14,12 +14,12 @@ using System.Data.SqlClient;
 using Mediachase.Commerce.Core;
 using System.Text.RegularExpressions;
 using Mediachase.Commerce.Orders;
-using Bokrondellen.Search.Solr;
 using Mediachase.Search.Extensions;
 using Mediachase.Search;
 using Mediachase.BusinessFoundation.Data.Business;
 using Mediachase.Commerce.Catalog.Managers;
 using System.Xml.Linq;
+using Bokrondellen.Initialization;
 
 
 namespace EVRY.One.Varnamo.ItemUpdateUtility
@@ -109,6 +109,10 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
                             Compare(ARGS);
                             break;
 
+                        case "setstatus":
+                            SetStatus();
+                            break;
+
                         default:
                             PrintSyntax();
                             break;
@@ -129,6 +133,11 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
                 Console.CursorVisible = true;
             }
 
+        }
+
+        private static void SetStatus()
+        {
+            
         }
 
         private static void HandleError(Exception e)
@@ -283,7 +292,9 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
 
         private static void Initialize()
         {
-            CONNECTION_STRING = ConfigurationManager.ConnectionStrings["EcfSqlConnection"].ConnectionString;
+            InitializeFramework.Initialize();
+
+            CONNECTION_STRING = InitializeFramework.GetConnectionString(); //ConfigurationManager.ConnectionStrings["EcfSqlConnection"].ConnectionString;
 
             BFData.DataContext.Current = new BFData.DataContext(CONNECTION_STRING);
 
@@ -483,6 +494,9 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
             criteria.StartingRecord = StartingRecord;
             criteria.RecordsToRetrieve = RecordsToRecieve;
 
+            criteria.Currency = new Mediachase.Commerce.Currency("SEK");
+
+
             SearchResults results = (SearchResults)SEARCH_MANAGER.Search(criteria);
 
             return results;
@@ -502,7 +516,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
             {
                 foreach (var x in argsCollection)
                     if (Regex.IsMatch(x.Value, @"^[/\-]"))
-                        ARGS.Add(x.Value.Substring(1, x.Value.Length - 1), argsCollection[x.Index + 1].Value);
+                        ARGS.Add(x.Value.Substring(1, x.Value.Length - 1), x.Index + 2 > argsCollection.Length ? null : argsCollection[x.Index + 1].Value);
             }
             catch (Exception e)
             {
@@ -599,7 +613,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
 
         private static void IndexCatalogEntry(CatalogEntryDto entry, MetaObject metaObj, IEnumerable<string> catalogLanguages)
         {
-            CatalogContext.MetaDataContext.UseCurrentUICulture = false;
+            CatalogContext.MetaDataContext.UseCurrentThreadCulture = false;
             int indexCounter = 0;
 
             MetaObjectSerialized serialized = new MetaObjectSerialized();
@@ -618,7 +632,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
             }
 
             entry.CatalogEntry[0].SerializedData = serialized.BinaryValue;
-            CatalogContext.MetaDataContext.UseCurrentUICulture = true;
+            CatalogContext.MetaDataContext.UseCurrentThreadCulture = true;
             CatalogContext.Current.SaveCatalogEntry(entry);
         }
 
