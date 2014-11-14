@@ -8,7 +8,6 @@ using Mediachase.Commerce.Catalog.Dto;
 using Mediachase.MetaDataPlus.Configurator;
 using Mediachase.MetaDataPlus;
 using Mediachase.Commerce.Storage;
-using BFData = Mediachase.BusinessFoundation.Data;
 using System.Configuration;
 using System.Data.SqlClient;
 using Mediachase.Commerce.Core;
@@ -20,6 +19,8 @@ using Mediachase.BusinessFoundation.Data.Business;
 using Mediachase.Commerce.Catalog.Managers;
 using System.Xml.Linq;
 using Bokrondellen.Initialization;
+using BFData = Mediachase.BusinessFoundation.Data;
+using Consid.ItemUpdateUtility.Business.StockStatus;
 
 
 namespace EVRY.One.Varnamo.ItemUpdateUtility
@@ -73,6 +74,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
         private static Dictionary<string, string> ARGS = new Dictionary<string, string>();
         private static SearchManager SEARCH_MANAGER;
         private static ConsoleColor defaultColor;
+        private static StockStatusItemCollection _stockStatusEnum = new StockStatusItemCollection();
 
         static void Main(string[] args)
         {
@@ -137,8 +139,94 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
 
         private static void SetStatus()
         {
-            
+            ICatalogSystem context = CatalogContext.Current;
+            CatalogDto catalogs = context.GetCatalogDto();
+
+            // Load meta class
+            MetaClass bookMetaClass = MetaClass.Load(CatalogContext.MetaDataContext, "Book");
+
+            _stockStatusEnum.Load();
+            List<string> catalogLanguages = new List<string>();
+            foreach (var catalog in catalogs.Catalog.Rows.Cast<CatalogDto.CatalogRow>())
+            {
+                catalogLanguages.Add(catalog.DefaultLanguage);
+                CatalogDto.CatalogLanguageRow[] languageRows = catalog.GetCatalogLanguageRows();
+                catalogLanguages.AddRange(languageRows.Select(r => r.LanguageCode));
+
+                using (SqlConnection conn = new SqlConnection(CONNECTION_STRING))
+                {
+                    conn.Open();
+                    try
+                    {
+
+                        Console.WriteLine("Catalog: {0} {1}", catalog.CatalogId, catalog.Name);
+
+                        CatalogNodeDto nodeDto = context.GetCatalogNodesDto(catalog.CatalogId, new CatalogNodeResponseGroup(CatalogNodeResponseGroup.ResponseGroup.CatalogNodeInfo));
+
+                        foreach (CatalogNodeDto.CatalogNodeRow node in nodeDto.CatalogNode)
+                        {
+                            Console.WriteLine("    Node: {0} {1}", node.Code, node.Name);
+
+                            CatalogEntryDto entries = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
+
+                            foreach (CatalogEntryDto.CatalogEntryRow entry in entries.CatalogEntry)
+                            {
+                                //EntityObject itemArticle = BusinessManager.List("ItemArticle", new FilterElement[] { new FilterElement("ItemNumber", FilterElementType.Equal, entry.Code) }).FirstOrDefault();
+
+                                MetaObject metaObj = MetaObject.Load(MetaDataContext.Instance, entry.CatalogEntryId, bookMetaClass);
+                                //metaObj.Modified = DateTime.UtcNow;
+
+                                SqlCommand cmd = new SqlCommand(@"
+                                select distinct 
+	                                sst.Id, sst.StockStatus
+                                from cls_ItemArticle ia
+	                                inner join cls_ItemArticle_Distributor iad
+		                                on ia.ItemArticleId = iad.ItemArticleId
+	                                inner join 
+	                                (
+		                                select Id, FriendlyName StockStatus, OrderId
+		                                from mcmd_MetaEnum
+		                                where TypeName = 'StockStatusType'
+	                                ) sst
+		                                on iad.StockStatus = sst.Id
+                                where ia.ItemNumber = @ItemNumber", conn);
+
+                                cmd.Parameters.AddWithValue("@ItemNumber", entry.Code);
+
+                                List<int> stockStatuses = new List<int>();
+
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        string stockStatus = Convert.IsDBNull(reader["StockStatus"]) ? null : (string)reader["StockStatus"];
+                                        int stockStatusKey = Convert.IsDBNull(reader["Id"]) ? 0 : (int)reader["id"];
+
+                                        stockStatuses.Add(stockStatusKey);
+                                    }
+                                }
+
+
+                                int flag = _stockStatusEnum.GetFlag(stockStatuses);
+
+                                Console.WriteLine("      {0} {1} {2}",
+                                    entry.Code,
+                                    Convert.ToString(flag, 2).PadLeft(8, '0'),
+                                    entry.Name.Length > 23 ? entry.Name.Substring(0, 20) + "..." : entry.Name);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        if (conn.State == System.Data.ConnectionState.Open)
+                            conn.Close();
+                    }
+                    Console.WriteLine();
+                }
+            }
+
         }
+
 
         private static void HandleError(Exception e)
         {
@@ -170,7 +258,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
             Console.Write("Executing search... ");
             SearchResults results = Search(searchPhrase, maxRows, currentRow);
             Console.WriteLine("done!");
-            
+
             Console.Write("Loading rows");
             while (currentRow < results.TotalCount)
             {
@@ -645,6 +733,7 @@ namespace EVRY.One.Varnamo.ItemUpdateUtility
             Console.WriteLine("{0}ItemUpdateUtility -delete <SearchPhrase>", indent);
             Console.WriteLine("{0}ItemUpdateUtility -update <Uri>", indent);
             Console.WriteLine("{0}ItemUpdateUtility -compare <PropertyName> -filter <SearchPhrase>", indent);
+            Console.WriteLine("{0}ItemUpdateUtility -setstatus", indent);
         }
     }
 }

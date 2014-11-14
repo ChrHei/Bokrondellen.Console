@@ -67,6 +67,7 @@ namespace Bokrondellen.Initialization
             CatalogContext.MetaDataContext = new MetaDataContext(GetConnectionString());
             OrderContext.MetaDataContext = new MetaDataContext(GetConnectionString());
             MetaDataContext.DefaultCurrent = new MetaDataContext(GetConnectionString());
+            MetaDataContext.Instance.ConnectionString= GetConnectionString();
 
             Logger.Debug("Ended initialization.");
         }

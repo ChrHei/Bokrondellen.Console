@@ -345,6 +345,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\StockStatus\StockStatusItem.cs" />
+    <Compile Include="Business\StockStatus\StockStatusItemCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

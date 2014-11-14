@@ -244,6 +244,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\StockStatus\StockStatusItem.cs" />
+    <Compile Include="Business\StockStatus\StockStatusItemCollection.cs" />
     <Compile Include="Installer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -307,6 +309,7 @@
     <Content Include="Data\Artiklar där PAND skall tas bort.xml" />
     <Content Include="Data\ItemUpdate.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

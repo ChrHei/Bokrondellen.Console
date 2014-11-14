@@ -17,6 +17,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Bokrondellen.Console.Business.StockStatus;
 
 namespace Bokrondellen.Console
 {
@@ -24,6 +26,7 @@ namespace Bokrondellen.Console
     {
         public const string Undefined = null;
         public const string UpdateMarket = "UpdateMarket";
+        public const string SetStockStatus = "SetStockStatus";
     }
 
     struct Switches
@@ -55,6 +58,9 @@ namespace Bokrondellen.Console
                 {
                     case Actions.UpdateMarket:
                         UpdateMarket();
+                        break;
+                    case Actions.SetStockStatus:
+                        SetStockStatus();
                         break;
                 }
             }
@@ -178,6 +184,97 @@ namespace Bokrondellen.Console
             }
         }
 
+        private static void SetStockStatus()
+        {
+            ICatalogSystem context = CatalogContext.Current;
+            CatalogDto catalogs = context.GetCatalogDto();
+
+            // Load meta class
+            MetaClass bookMetaClass = MetaClass.Load(CatalogContext.MetaDataContext, "Book");
+
+            StockStatusItemCollection stockStatusColl = new StockStatusItemCollection();
+            stockStatusColl.Load();
+
+            List<string> catalogLanguages = new List<string>();
+            foreach (var catalog in catalogs.Catalog.Rows.Cast<CatalogDto.CatalogRow>())
+            {
+                catalogLanguages.Add(catalog.DefaultLanguage);
+                CatalogDto.CatalogLanguageRow[] languageRows = catalog.GetCatalogLanguageRows();
+                catalogLanguages.AddRange(languageRows.Select(r => r.LanguageCode));
+
+                using (SqlConnection conn = new SqlConnection(MetaDataContext.DefaultCurrent.ConnectionString))
+                {
+                    conn.Open();
+                    try
+                    {
+
+                        System.Console.WriteLine("Catalog: {0} {1}", catalog.CatalogId, catalog.Name);
+
+                        CatalogNodeDto nodeDto = context.GetCatalogNodesDto(catalog.CatalogId, new CatalogNodeResponseGroup(CatalogNodeResponseGroup.ResponseGroup.CatalogNodeInfo));
+
+                        foreach (CatalogNodeDto.CatalogNodeRow node in nodeDto.CatalogNode)
+                        {
+                            System.Console.WriteLine("    Node: {0} {1}", node.Code, node.Name);
+
+                            CatalogEntryDto entries = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
+
+                            foreach (CatalogEntryDto.CatalogEntryRow entry in entries.CatalogEntry)
+                            {
+                                //EntityObject itemArticle = BusinessManager.List("ItemArticle", new FilterElement[] { new FilterElement("ItemNumber", FilterElementType.Equal, entry.Code) }).FirstOrDefault();
+
+                                MetaObject metaObj = MetaObject.Load(MetaDataContext.Instance, entry.CatalogEntryId, bookMetaClass);
+                                //metaObj.Modified = DateTime.UtcNow;
+
+                                SqlCommand cmd = new SqlCommand(@"
+                                select distinct 
+	                                sst.Id, sst.StockStatus
+                                from cls_ItemArticle ia
+	                                inner join cls_ItemArticle_Distributor iad
+		                                on ia.ItemArticleId = iad.ItemArticleId
+	                                inner join 
+	                                (
+		                                select Id, FriendlyName StockStatus, OrderId
+		                                from mcmd_MetaEnum
+		                                where TypeName = 'StockStatusType'
+	                                ) sst
+		                                on iad.StockStatus = sst.Id
+                                where ia.ItemNumber = @ItemNumber", conn);
+
+                                cmd.Parameters.AddWithValue("@ItemNumber", entry.Code);
+
+                                List<int> stockStatuses = new List<int>();
+
+                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                    {
+                                        string stockStatus = Convert.IsDBNull(reader["StockStatus"]) ? null : (string)reader["StockStatus"];
+                                        int stockStatusKey = Convert.IsDBNull(reader["Id"]) ? 0 : (int)reader["id"];
+
+                                        stockStatuses.Add(stockStatusKey);
+                                    }
+                                }
+
+                                int flag = stockStatusColl.GetFlag(stockStatuses);
+
+                                System.Console.WriteLine("      {0} {1} {2}",
+                                    entry.Code,
+                                    Convert.ToString(flag, 2).PadLeft(8, '0'),
+                                    entry.Name.Length > 23 ? entry.Name.Substring(0, 20) + "..." : entry.Name);
+                            }
+                        }
+                    }
+                    finally
+                    {
+                        if (conn.State == System.Data.ConnectionState.Open)
+                            conn.Close();
+                    }
+                    System.Console.WriteLine();
+                }
+            }
+
+        }
+
         private static void IndexCatalogEntry(CatalogEntryDto entry, MetaObject metaObj, IEnumerable<string> catalogLanguages)
         {
             CatalogContext.MetaDataContext.UseCurrentThreadCulture = false;
@@ -200,7 +297,6 @@ namespace Bokrondellen.Console
             CatalogContext.MetaDataContext.UseCurrentThreadCulture = true;
             CatalogContext.Current.SaveCatalogEntry(entry);
         }
-
 
         static void ParseArgs(string[] args)
         {
