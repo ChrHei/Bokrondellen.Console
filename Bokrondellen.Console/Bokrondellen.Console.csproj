@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>consid-logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -351,81 +354,82 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Configs\baf.config">
+    <Content Include="App.config" />
+    <Content Include="Configs\baf.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\baf.data.manager.config">
+    </Content>
+    <Content Include="Configs\baf.data.manager.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\baf.data.metaobject.config">
+    </Content>
+    <Content Include="Configs\baf.data.metaobject.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\baf.library.folders.config">
+    </Content>
+    <Content Include="Configs\baf.library.folders.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\bokrondellen.config">
+    </Content>
+    <Content Include="Configs\bokrondellen.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.app.config">
+    </Content>
+    <Content Include="Configs\ecf.app.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.asset.config">
+    </Content>
+    <Content Include="Configs\ecf.asset.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.catalog.config">
+    </Content>
+    <Content Include="Configs\ecf.catalog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.cms.config">
+    </Content>
+    <Content Include="Configs\ecf.cms.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.customer.config">
+    </Content>
+    <Content Include="Configs\ecf.customer.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.customization.config">
+    </Content>
+    <Content Include="Configs\ecf.customization.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.marketing.config">
+    </Content>
+    <Content Include="Configs\ecf.marketing.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.order.config">
+    </Content>
+    <Content Include="Configs\ecf.order.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.security.config">
+    </Content>
+    <Content Include="Configs\ecf.security.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.ssl.config">
+    </Content>
+    <Content Include="Configs\ecf.ssl.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\ecf.workflow.config">
+    </Content>
+    <Content Include="Configs\ecf.workflow.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\Generator.config">
+    </Content>
+    <Content Include="Configs\Generator.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\Mediachase.Search.config">
+    </Content>
+    <Content Include="Configs\Mediachase.Search.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\Mediachase.Search.Filters.config">
+    </Content>
+    <Content Include="Configs\Mediachase.Search.Filters.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\Mediachase.Search.Filters.xsd">
+    </Content>
+    <Content Include="Configs\Mediachase.Search.Filters.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Configs\Mediachase.Search.Objects.xsd">
+    </Content>
+    <Content Include="Configs\Mediachase.Search.Objects.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="connectionStrings.config">
+    </Content>
+    <Content Include="connectionStrings.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="log.config">
+    </Content>
+    <Content Include="consid-logo.ico" />
+    <Content Include="log.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="log4net.config">
+    </Content>
+    <Content Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="modules\_protected\CMS\EPiServer.Cms.Shell.UI.zip" />
     <None Include="modules\_protected\EPiServer.Commerce.Shell\EPiServer.Commerce.Shell.zip" />
     <None Include="modules\_protected\EPiServer.Commerce.UI\EPiServer.Commerce.UI.zip" />
