@@ -352,6 +352,7 @@
     <Compile Include="Business\StockStatus\StockStatusItemCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ProgressBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -442,6 +443,7 @@
       <Name>Bokrondellen.Initialization</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

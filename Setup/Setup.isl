@@ -343,6 +343,8 @@
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>Bokrondellen.Console.Content_Files</td><td>{89BBA2C2-13A0-4F8C-BFDB-6B34B2BF2D60}</td><td>INSTALLDIR</td><td>2</td><td/><td>bokrondellen.console.content</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>Bokrondellen.Console.Primary_output</td><td>{D3ADF0D2-0F09-4BB7-A36E-667E68EE1258}</td><td>INSTALLDIR</td><td>2</td><td/><td>bokrondellen.console.primary</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td>{1A7BF3E1-A88B-4EE1-90AE-B61439C2190C}</td><td>APP_DATA</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{57E558E2-C4F1-42B8-939A-C4F03AC5549C}</td><td>LOG</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1052,6 +1054,8 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>APP_DATA</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>LOG</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1132,6 +1136,7 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S255">ISFolderName</col>
 		<row><td>ALLUSERSPROFILE</td><td>TARGETDIR</td><td>.:ALLUSE~1|All Users</td><td/><td>0</td><td/></row>
+		<row><td>APP_DATA</td><td>INSTALLDIR</td><td>app_data</td><td/><td>0</td><td/></row>
 		<row><td>AdminToolsFolder</td><td>TARGETDIR</td><td>.:Admint~1|AdminTools</td><td/><td>0</td><td/></row>
 		<row><td>AppDataFolder</td><td>TARGETDIR</td><td>.:APPLIC~1|Application Data</td><td/><td>0</td><td/></row>
 		<row><td>BOKRONDELLEN.CONSOLE</td><td>CONSID_AB</td><td>BOKRON~1|Bokrondellen.Console</td><td/><td>0</td><td/></row>
@@ -1149,6 +1154,7 @@
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
+		<row><td>LOG</td><td>APP_DATA</td><td>log</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MICROSOFT</td><td>ProgramFilesFolder</td><td>MICROS~1|Microsoft</td><td/><td>0</td><td/></row>
 		<row><td>MY_PRODUCT_NAME</td><td>MICROSOFT</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
@@ -1869,6 +1875,8 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>Bokrondellen.Console.Content_Files</td></row>
 		<row><td>AlwaysInstall</td><td>Bokrondellen.Console.Primary_output</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
 	<table name="File">
@@ -2030,6 +2038,8 @@
 		<col def="S0">Miscellaneous</col>
 		<row><td>Bokrondellen.Console.Content_Files</td><td/><td/><td>_1F417023_2140_4996_B07B_14A27A513F75_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>Bokrondellen.Console.Primary_output</td><td/><td/><td>_448AB237_7A53_4B77_A47E_19C5CCC3C9D1_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_C5A433E1_C367_479D_B8D0_823EDF313A23_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_C54F718D_76D0_418D_8212_AD892FB701B8_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2647,7 +2657,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Consid AB</td><td>0</td><td/><td>1973564206</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Consid AB</td><td>0</td><td/><td>1973582511</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1973594894</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1973594894</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1973579086</td></row>
@@ -3752,8 +3762,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1973594894</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1973594894</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1973594894</td></row>
-		<row><td>ID_STRING1</td><td>1033</td><td>http://www.consid.se/</td><td>0</td><td/><td>1973586734</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>Consid AB</td><td>0</td><td/><td>1973564206</td></row>
+		<row><td>ID_STRING1</td><td>1033</td><td>http://www.ConsidAB.com</td><td>0</td><td/><td>1973582511</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>Consid AB</td><td>0</td><td/><td>1973582511</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1973594894</td></row>
 	</table>
 
