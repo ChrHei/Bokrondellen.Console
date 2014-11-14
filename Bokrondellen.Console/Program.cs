@@ -46,7 +46,6 @@ namespace Bokrondellen.Console
         // Load meta class
         static MetaClass metaClass;
 
-
         static void Main(string[] args)
         {
             try
