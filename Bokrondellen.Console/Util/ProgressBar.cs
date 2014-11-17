@@ -12,14 +12,20 @@ namespace Bokrondellen.Console.Util
         private readonly int barSize;
         private readonly int maxValue;
 
-        ProgressBar(char progressCharacter, int maxValue, int barSize)
+        public bool ShowPercentage { get; set; }
+        public bool ShowCounter { get; set; }
+
+        public ProgressBar(char progressCharacter, int maxValue, int barSize)
         {
             this.progressCharacter = progressCharacter;
             this.maxValue = maxValue;
             this.barSize = barSize;
+
+            ShowPercentage = false;
+            ShowCounter = true;
         }
 
-        public void DrawProgressBar(int complete)
+        public void Draw(int complete)
         {
             System.Console.CursorVisible = false;
             int left = System.Console.CursorLeft;
@@ -32,11 +38,16 @@ namespace Bokrondellen.Console.Util
 
             System.Console.ForegroundColor = ConsoleColor.Green;
             System.Console.Write(p1);
-            System.Console.ForegroundColor = ConsoleColor.DarkGreen;
+            System.Console.ForegroundColor = ConsoleColor.DarkGray;
             System.Console.Write(p2);
 
             System.Console.ResetColor();
-            System.Console.Write(" {0}%", (perc * 100).ToString("N2"));
+            if (ShowPercentage)
+                System.Console.Write(" {0}%", (perc * 100).ToString("N2"));
+
+            if (ShowCounter)
+                System.Console.Write(" {0}/{1}", complete, maxValue);
+
             System.Console.CursorLeft = left;
         }
     }

@@ -19,6 +19,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Bokrondellen.Console.Business.StockStatus;
+using Bokrondellen.Console.Util;
 
 namespace Bokrondellen.Console
 {
@@ -34,7 +35,7 @@ namespace Bokrondellen.Console
         public const string Undefined = null;
         public const string Action = "action";
         public const string Catalog = "catalog";
-        public const string Market = "market";
+        public const string MarketId = "marketid";
 
     }
 
@@ -67,7 +68,6 @@ namespace Bokrondellen.Console
             {
                 logger.Error(e.Message, e);
                 System.Console.WriteLine(e.Message);
-
             }
         }
 
@@ -84,11 +84,11 @@ namespace Bokrondellen.Console
         private static void UpdateMarket()
         {
             string catalogName;
-            string market;
+            string marketId;
             try { catalogName = Args[Switches.Catalog]; }
             catch { throw new Exception(string.Format("Missing switch: -{0}", Switches.Catalog)); }
-            try { market = Args[Switches.Market]; }
-            catch { throw new Exception(string.Format("Missing switch: -{0}", Switches.Market)); }
+            try { marketId = Args[Switches.MarketId]; }
+            catch { throw new Exception(string.Format("Missing switch: -{0}", Switches.MarketId)); }
 
             MetaDictionary allMarkets = MetaDictionary.Load(CatalogContext.MetaDataContext, MetaField.Load(CatalogContext.MetaDataContext, "_ExcludedCatalogEntryMarkets"));
 
@@ -99,7 +99,7 @@ namespace Bokrondellen.Console
 
             MetaDictionaryItem[] disabledMarkets = allMarkets
                 .OfType<MetaDictionaryItem>()
-                .Where(mdi => enabledMarkets.Any(em => em.MarketId.Value == mdi.Value && em.MarketId.Value != market))
+                .Where(mdi => enabledMarkets.Any(em => em.MarketId.Value == mdi.Value && !em.MarketId.Value.Equals(marketId, StringComparison.CurrentCultureIgnoreCase)))
                 .ToArray();
 
             System.Console.WriteLine("Updating market for catalog {0}.", catalogName);
@@ -120,24 +120,27 @@ namespace Bokrondellen.Console
                 {
                     nodeCount++;
                     System.Console.WriteLine("Loading entries in node {0}.", node.Name);
+                    System.Console.WriteLine();
 
-                    Entries entries = CatalogContext.Current.GetCatalogEntries(catalogName, node.ID);
-                    if (entries.Entry != null)
+                    CatalogEntryDto entries = CatalogContext.Current.GetCatalogEntriesDto(catalogName, node.CatalogNodeId);
+                    if (entries.CatalogEntry.Count > 0)
                     {
-
-                        int totalEntryCount = entries.Entry.Length;
+                        int totalEntryCount = entries.CatalogEntry.Count;
                         int entryCount = 0;
 
-                        System.Console.WriteLine("Found {0} entries in node {1}", totalEntryCount, node.Name);
+                        ProgressBar progressBar = new ProgressBar('\u2588', totalEntryCount, 40);
 
-                        foreach (Entry entry in entries.Entry)
+                        System.Console.WriteLine("Found {0} entries in node {1}", totalEntryCount, node.Name);
+                        System.Console.WriteLine();
+
+                        foreach (CatalogEntryDto.CatalogEntryRow entry in entries.CatalogEntry.Rows)
                         {
                             entryCount++;
-                            logger.DebugFormat("Loading meta object for entry {0}/{1}\t{2}\t{3}",
+
+                            logger.DebugFormat("Loading meta object for entry {0}/{1}\t{2}",
                                 entryCount,
                                 totalEntryCount,
-                                entry.ID,
-                                entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"]);
+                                entry.Code);
 
                             MetaObject metaObj = MetaObject.Load(CatalogContext.MetaDataContext, entry.CatalogEntryId, metaClass) as MetaObject;
 
@@ -152,20 +155,22 @@ namespace Bokrondellen.Console
 
                                 IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
 
+                                progressBar.Draw(entryCount);
+
                                 logger.InfoFormat("Saved excluded market(s) for entry {0}/{1}\t{2}\t{3}\t{4}",
                                     entryCount,
                                     totalEntryCount,
-                                    entry.ID,
-                                    entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"],
+                                    entry.CatalogEntryId,
+                                    metaObj["titel"] ?? metaObj["arbetstitel"],
                                     string.Join(", ", disabledMarkets.Select(i => i.Value).ToArray()));
                             }
                             else
                             {
-                                logger.WarnFormat("Failed to load meta object for {0} {1}", entry.ID, entry.ItemAttributes["titel"] ?? entry.ItemAttributes["arbetstitel"]);
+                                logger.WarnFormat("Failed to load meta object for {0} {1}", entry.CatalogEntryId, entry.Name);
                             }
                         }
                         System.Console.WriteLine("Updated {0} entries in node {1}/{2} {3}",
-                            entries.Entry.Length,
+                            entries.CatalogEntry.Count,
                             nodeCount,
                             totalNodeCount,
                             node.Name);
@@ -191,6 +196,8 @@ namespace Bokrondellen.Console
             // Load meta class
             MetaClass bookMetaClass = MetaClass.Load(CatalogContext.MetaDataContext, "Book");
 
+            MetaDictionary allStockStatuses = EnsureStockStatuses(); 
+
             StockStatusItemCollection stockStatusColl = new StockStatusItemCollection();
             stockStatusColl.Load();
 
@@ -206,22 +213,25 @@ namespace Bokrondellen.Console
                     conn.Open();
                     try
                     {
-
                         System.Console.WriteLine("Catalog: {0} {1}", catalog.CatalogId, catalog.Name);
 
                         CatalogNodeDto nodeDto = context.GetCatalogNodesDto(catalog.CatalogId, new CatalogNodeResponseGroup(CatalogNodeResponseGroup.ResponseGroup.CatalogNodeInfo));
 
                         foreach (CatalogNodeDto.CatalogNodeRow node in nodeDto.CatalogNode)
                         {
-                            System.Console.WriteLine("    Node: {0} {1}", node.Code, node.Name);
+                            System.Console.WriteLine("Node: {0} {1}", node.Code, node.Name);
+                            System.Console.WriteLine();
 
-                            CatalogEntryDto entries = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
+                            CatalogEntryDto entryDto = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
 
-                            foreach (CatalogEntryDto.CatalogEntryRow entry in entries.CatalogEntry)
+                            ProgressBar progressBar = new ProgressBar('\u2588', entryDto.CatalogEntry.Count, 40);
+                            int counter = 1;
+
+                            foreach (CatalogEntryDto.CatalogEntryRow entry in entryDto.CatalogEntry)
                             {
                                 //EntityObject itemArticle = BusinessManager.List("ItemArticle", new FilterElement[] { new FilterElement("ItemNumber", FilterElementType.Equal, entry.Code) }).FirstOrDefault();
 
-                                MetaObject metaObj = MetaObject.Load(MetaDataContext.Instance, entry.CatalogEntryId, bookMetaClass);
+                                MetaObject metaObj = MetaObject.Load(CatalogContext.MetaDataContext, entry.CatalogEntryId, bookMetaClass);
                                 //metaObj.Modified = DateTime.UtcNow;
 
                                 SqlCommand cmd = new SqlCommand(@"
@@ -241,7 +251,7 @@ namespace Bokrondellen.Console
 
                                 cmd.Parameters.AddWithValue("@ItemNumber", entry.Code);
 
-                                List<int> stockStatuses = new List<int>();
+                                List<string> stockStatuses = new List<string>();
 
                                 using (SqlDataReader reader = cmd.ExecuteReader())
                                 {
@@ -250,16 +260,19 @@ namespace Bokrondellen.Console
                                         string stockStatus = Convert.IsDBNull(reader["StockStatus"]) ? null : (string)reader["StockStatus"];
                                         int stockStatusKey = Convert.IsDBNull(reader["Id"]) ? 0 : (int)reader["id"];
 
-                                        stockStatuses.Add(stockStatusKey);
+                                        stockStatuses.Add(stockStatus);
                                     }
                                 }
 
-                                int flag = stockStatusColl.GetFlag(stockStatuses);
+                                metaObj["lagerstatus"] = allStockStatuses.Cast<MetaDictionaryItem>().Where(d => stockStatuses.Any(s => s == d.Value)).ToArray();
+                                    
+                                    //stockStatusColl.Where(s => stockStatuses.Any(i => i == s.Value.MetaEnumItem.Handle)).Select(s => s.Value.MetaEnumItem).ToArray();
 
-                                System.Console.WriteLine("      {0} {1} {2}",
-                                    entry.Code,
-                                    Convert.ToString(flag, 2).PadLeft(8, '0'),
-                                    entry.Name.Length > 23 ? entry.Name.Substring(0, 20) + "..." : entry.Name);
+
+                                metaObj.AcceptChanges(CatalogContext.MetaDataContext);
+
+                                IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
+                                progressBar.Draw(counter++);
                             }
                         }
                     }
@@ -272,6 +285,33 @@ namespace Bokrondellen.Console
                 }
             }
 
+        }
+
+        private static MetaDictionary EnsureStockStatuses()
+        {
+            MetaDictionary stockStatuses = MetaDictionary.Load(CatalogContext.MetaDataContext, MetaField.Load(CatalogContext.MetaDataContext, "lagerstatus"));
+/*
+1	Ej utkommen
+2	Finns i lager
+3	Tillfälligt slut
+4	Spärrad
+5	Utkommer ej
+6	Beställningsvara
+7	Definitivt slut
+*/
+            if (stockStatuses.Count == 0)
+            {
+                stockStatuses.Add("Ej utkommen");
+                stockStatuses.Add("Finns i lager");
+                stockStatuses.Add("Tillfälligt slut");
+                stockStatuses.Add("Spärrad");
+                stockStatuses.Add("Utkommer ej");
+                stockStatuses.Add("Beställningsvara");
+                stockStatuses.Add("Definitivt slut");
+
+            }
+
+            return stockStatuses;
         }
 
         private static void IndexCatalogEntry(CatalogEntryDto entry, MetaObject metaObj, IEnumerable<string> catalogLanguages)
