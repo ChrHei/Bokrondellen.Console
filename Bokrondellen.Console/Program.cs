@@ -304,6 +304,9 @@ namespace Bokrondellen.Console
                             conn.Close();
                     }
                     System.Console.WriteLine();
+                    System.Console.WriteLine("Update completed. Press any key to continue...");
+                    System.Console.ReadKey(true);
+
                 }
             }
         }

@@ -4006,7 +4006,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{18590076-8978-4244-90B9-B347EB921162}</td></row>
 		<row><td>ISUSSignature</td><td>{79200C28-E170-4960-8B3E-745C66961A86}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewUI,viewAppFiles,viewFeatureFiles,viewObjects,viewShortcuts,viewBillboards,viewSupportFiles,viewCustomActions,viewInstallScriptStd,viewSystemSearch,viewTextMessages,viewProject,viewUpgradePaths</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewUI,viewAppFiles,viewFeatureFiles,viewObjects,viewShortcuts,viewBillboards,viewSupportFiles,viewCustomActions,viewInstallScriptStd,viewSystemSearch,viewTextMessages,viewProject,viewUpgradePaths,viewSetupDesign,viewSetupTypes,viewUpdateService</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4384,7 +4384,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]Bokrondellen.Console.Primary output</td><td/></row>
 		<row><td>ProductCode</td><td>{62012A57-ACD3-4609-B7EF-3694F2F4ABA2}</td><td/></row>
 		<row><td>ProductName</td><td>Bokrondellen.Console</td><td/></row>
-		<row><td>ProductVersion</td><td>1.01.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>1.02.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
