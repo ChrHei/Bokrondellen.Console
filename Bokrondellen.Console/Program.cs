@@ -12,6 +12,7 @@ using Mediachase.Commerce.Markets;
 using Mediachase.Commerce.Storage;
 using Mediachase.MetaDataPlus;
 using Mediachase.MetaDataPlus.Configurator;
+using BFData = Mediachase.BusinessFoundation.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,26 +50,26 @@ namespace Bokrondellen.Console
 
         static void Main(string[] args)
         {
-            try
-            {
-                Initialize(args);
-                string action = Args[Switches.Action];
+            //try
+            //{
+            Initialize(args);
+            string action = Args[Switches.Action];
 
-                switch (action)
-                {
-                    case Actions.UpdateMarket:
-                        UpdateMarket();
-                        break;
-                    case Actions.SetStockStatus:
-                        SetStockStatus();
-                        break;
-                }
-            }
-            catch (Exception e)
+            switch (action)
             {
-                logger.Error(e.Message, e);
-                System.Console.WriteLine(e.Message);
+                case Actions.UpdateMarket:
+                    UpdateMarket();
+                    break;
+                case Actions.SetStockStatus:
+                    SetStockStatus();
+                    break;
             }
+            //}
+            //catch (Exception e)
+            //{
+            //    logger.Error(e.Message, e);
+            //    System.Console.WriteLine(e.Message);
+            //}
         }
 
         private static void Initialize(string[] args)
@@ -196,7 +197,7 @@ namespace Bokrondellen.Console
             // Load meta class
             MetaClass bookMetaClass = MetaClass.Load(CatalogContext.MetaDataContext, "Book");
 
-            MetaDictionary allStockStatuses = EnsureStockStatuses(); 
+            MetaDictionary allStockStatuses = EnsureStockStatuses();
 
             StockStatusItemCollection stockStatusColl = new StockStatusItemCollection();
             stockStatusColl.Load();
@@ -215,63 +216,84 @@ namespace Bokrondellen.Console
                     {
                         System.Console.WriteLine("Catalog: {0} {1}", catalog.CatalogId, catalog.Name);
 
-                        CatalogNodeDto nodeDto = context.GetCatalogNodesDto(catalog.CatalogId, new CatalogNodeResponseGroup(CatalogNodeResponseGroup.ResponseGroup.CatalogNodeInfo));
+                        System.Console.WriteLine();
 
-                        foreach (CatalogNodeDto.CatalogNodeRow node in nodeDto.CatalogNode)
+                        //CatalogEntryDto entryDto = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
+
+                        SqlCommand cmdEntryCount = new SqlCommand("Select Count(*) from CatalogEntry, CatalogEntryEx_Book where CatalogEntryId = CatalogEntryEx_Book.ObjectId", conn);
+
+                        int totalEntries = (int)(cmdEntryCount.ExecuteScalar() ?? 0);
+
+                        ProgressBar progressBar = new ProgressBar('\u2588', totalEntries, 40);
+
+                        SqlCommand cmdEntries = new SqlCommand(@"select cn.CatalogNodeId, cn.Code NodeCode,
+                                ce.CatalogEntryId, ce.Code EntryCode 
+                                from CatalogEntry ce
+                                    inner join CatalogEntryEx_Book book
+                                        on ce.CatalogEntryId = book.ObjectId
+	                                left join (NodeEntryRelation rel
+		                                inner join CatalogNode cn
+			                                on rel.CatalogNodeId = cn.CatalogNodeId)
+		                                on ce.CatalogEntryId = rel.CatalogEntryId
+                                where ce.CatalogId = @CatalogId", conn);
+
+                        cmdEntries.Parameters.AddWithValue("@CatalogId", catalog.CatalogId);
+
+                        using (SqlDataReader entryReader = cmdEntries.ExecuteReader())
                         {
-                            System.Console.WriteLine("Node: {0} {1}", node.Code, node.Name);
-                            System.Console.WriteLine();
-
-                            CatalogEntryDto entryDto = context.GetCatalogEntriesDto(catalog.CatalogId, node.CatalogNodeId);
-
-                            ProgressBar progressBar = new ProgressBar('\u2588', entryDto.CatalogEntry.Count, 40);
                             int counter = 1;
-
-                            foreach (CatalogEntryDto.CatalogEntryRow entry in entryDto.CatalogEntry)
+                            while (entryReader.Read())
                             {
-                                //EntityObject itemArticle = BusinessManager.List("ItemArticle", new FilterElement[] { new FilterElement("ItemNumber", FilterElementType.Equal, entry.Code) }).FirstOrDefault();
+                                int catalogEntryId = entryReader.GetInt32(2);
+                                string code = entryReader.GetString(3);
 
-                                MetaObject metaObj = MetaObject.Load(CatalogContext.MetaDataContext, entry.CatalogEntryId, bookMetaClass);
+                                CatalogEntryDto entryDto = CatalogContext.Current.GetCatalogEntryDto(catalogEntryId);
+
+                                BFData.Business.EntityObject itemArticle = BFData.Business.BusinessManager.List("ItemArticle", new BFData.FilterElement[] { 
+                                    new BFData.FilterElement("ItemNumber", BFData.FilterElementType.Equal, code) }).FirstOrDefault();
+
+                                MetaObject metaObj = MetaObject.Load(CatalogContext.MetaDataContext, catalogEntryId, bookMetaClass);
                                 //metaObj.Modified = DateTime.UtcNow;
 
-                                SqlCommand cmd = new SqlCommand(@"
-                                select distinct 
-	                                sst.Id, sst.StockStatus
-                                from cls_ItemArticle ia
-	                                inner join cls_ItemArticle_Distributor iad
-		                                on ia.ItemArticleId = iad.ItemArticleId
-	                                inner join 
-	                                (
-		                                select Id, FriendlyName StockStatus, OrderId
-		                                from mcmd_MetaEnum
-		                                where TypeName = 'StockStatusType'
-	                                ) sst
-		                                on iad.StockStatus = sst.Id
-                                where ia.ItemNumber = @ItemNumber", conn);
-
-                                cmd.Parameters.AddWithValue("@ItemNumber", entry.Code);
-
-                                List<string> stockStatuses = new List<string>();
-
-                                using (SqlDataReader reader = cmd.ExecuteReader())
+                                using (SqlConnection conn2 = new SqlConnection(MetaDataContext.DefaultCurrent.ConnectionString))
                                 {
-                                    while (reader.Read())
+                                    conn2.Open();
+                                    SqlCommand stockStatusCmd = new SqlCommand(@"
+                                            select distinct 
+	                                            sst.Id, sst.StockStatus
+                                            from cls_ItemArticle ia
+	                                            inner join cls_ItemArticle_Distributor iad
+		                                            on ia.ItemArticleId = iad.ItemArticleId
+	                                            inner join 
+	                                            (
+		                                            select Id, FriendlyName StockStatus, OrderId
+		                                            from mcmd_MetaEnum
+		                                            where TypeName = 'StockStatusType'
+	                                            ) sst
+		                                            on iad.StockStatus = sst.Id
+                                            where ia.ItemNumber = @ItemNumber", conn2);
+
+                                    stockStatusCmd.Parameters.AddWithValue("@ItemNumber", code);
+
+                                    List<string> stockStatuses = new List<string>();
+
+                                    using (SqlDataReader stockStatusReader = stockStatusCmd.ExecuteReader())
                                     {
-                                        string stockStatus = Convert.IsDBNull(reader["StockStatus"]) ? null : (string)reader["StockStatus"];
-                                        int stockStatusKey = Convert.IsDBNull(reader["Id"]) ? 0 : (int)reader["id"];
+                                        while (stockStatusReader.Read())
+                                        {
+                                            string stockStatus = Convert.IsDBNull(stockStatusReader["StockStatus"]) ? null : (string)stockStatusReader["StockStatus"];
+                                            int stockStatusKey = Convert.IsDBNull(stockStatusReader["Id"]) ? 0 : (int)stockStatusReader["id"];
 
-                                        stockStatuses.Add(stockStatus);
+                                            stockStatuses.Add(stockStatus);
+                                        }
                                     }
+                                    metaObj["lagerstatus"] = allStockStatuses.Cast<MetaDictionaryItem>().Where(d => stockStatuses.Any(s => s == d.Value)).ToArray();
                                 }
-
-                                metaObj["lagerstatus"] = allStockStatuses.Cast<MetaDictionaryItem>().Where(d => stockStatuses.Any(s => s == d.Value)).ToArray();
-                                    
-                                    //stockStatusColl.Where(s => stockStatuses.Any(i => i == s.Value.MetaEnumItem.Handle)).Select(s => s.Value.MetaEnumItem).ToArray();
-
 
                                 metaObj.AcceptChanges(CatalogContext.MetaDataContext);
 
                                 IndexCatalogEntry(entryDto, metaObj, catalogLanguages);
+
                                 progressBar.Draw(counter++);
                             }
                         }
@@ -284,21 +306,20 @@ namespace Bokrondellen.Console
                     System.Console.WriteLine();
                 }
             }
-
         }
 
         private static MetaDictionary EnsureStockStatuses()
         {
             MetaDictionary stockStatuses = MetaDictionary.Load(CatalogContext.MetaDataContext, MetaField.Load(CatalogContext.MetaDataContext, "lagerstatus"));
-/*
-1	Ej utkommen
-2	Finns i lager
-3	Tillfälligt slut
-4	Spärrad
-5	Utkommer ej
-6	Beställningsvara
-7	Definitivt slut
-*/
+            /*
+            1	Ej utkommen
+            2	Finns i lager
+            3	Tillfälligt slut
+            4	Spärrad
+            5	Utkommer ej
+            6	Beställningsvara
+            7	Definitivt slut
+            */
             if (stockStatuses.Count == 0)
             {
                 stockStatuses.Add("Ej utkommen");
