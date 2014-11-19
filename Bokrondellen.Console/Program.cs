@@ -93,14 +93,11 @@ namespace Bokrondellen.Console
 
             MetaDictionary allMarkets = MetaDictionary.Load(CatalogContext.MetaDataContext, MetaField.Load(CatalogContext.MetaDataContext, "_ExcludedCatalogEntryMarkets"));
 
-            IMarketService marketService = ServiceLocator.Current.GetInstance<IMarketService>();
             ReferenceConverter referenceConverter = ServiceLocator.Current.GetInstance<ReferenceConverter>();
-
-            IMarket[] enabledMarkets = marketService.GetAllMarkets().Where(m => m.IsEnabled).ToArray();
 
             MetaDictionaryItem[] disabledMarkets = allMarkets
                 .OfType<MetaDictionaryItem>()
-                .Where(mdi => enabledMarkets.Any(em => em.MarketId.Value == mdi.Value && !em.MarketId.Value.Equals(marketId, StringComparison.CurrentCultureIgnoreCase)))
+                .Where(m => !m.Value.Equals(marketId, StringComparison.CurrentCultureIgnoreCase))
                 .ToArray();
 
             System.Console.WriteLine("Updating market for catalog {0}.", catalogName);
@@ -170,6 +167,7 @@ namespace Bokrondellen.Console
                                 logger.WarnFormat("Failed to load meta object for {0} {1}", entry.CatalogEntryId, entry.Name);
                             }
                         }
+
                         System.Console.WriteLine("Updated {0} entries in node {1}/{2} {3}",
                             entries.CatalogEntry.Count,
                             nodeCount,
@@ -304,11 +302,11 @@ namespace Bokrondellen.Console
                             conn.Close();
                     }
                     System.Console.WriteLine();
-                    System.Console.WriteLine("Update completed. Press any key to continue...");
-                    System.Console.ReadKey(true);
-
                 }
             }
+            System.Console.WriteLine("Update completed. Press any key to continue...");
+            System.Console.ReadKey(true);
+
         }
 
         private static MetaDictionary EnsureStockStatuses()
