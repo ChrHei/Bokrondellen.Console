@@ -26,6 +26,7 @@ using System.Reflection;
 using System.Web.Security;
 using System.Data.SqlClient;
 using Bokrondellen.ImportUtility.Entity;
+using Bokrondellen.Initialization;
 
 
 namespace Bokrondellen.ImportUtility
@@ -39,7 +40,7 @@ namespace Bokrondellen.ImportUtility
 
         static void Main(string[] args)
         {
-            Initialize();
+            InitializeFramework.Initialize();
 
             string connectionString = ConfigurationManager.ConnectionStrings["EcfSqlConnection"].ConnectionString;
 
@@ -208,15 +209,7 @@ namespace Bokrondellen.ImportUtility
         }
 
 
-        private static void Initialize()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["EcfSqlConnection"].ConnectionString;
-
-            Mediachase.Commerce.Core.AppContext.Current.ApplicationName = Properties.Settings.Default.ApplicationName;
-            Mediachase.Commerce.Core.AppContext.Current.ApplicationId = new Guid(Properties.Settings.Default.ApplicationId);
-
-            CatalogContext.MetaDataContext = new MDP.MetaDataContext(connectionString);
-        }
+        
 
         private static void WaitForKey()
         {
@@ -1771,7 +1764,7 @@ namespace Bokrondellen.ImportUtility
 
             if (metaObj == null)
             {
-                metaObj = MDP.MetaObject.NewObject(CatalogContext.MetaDataContext, nodeDto.CatalogNode[0].CatalogNodeId, metaClass.Id, "system");
+                metaObj = new MDP.MetaObject(metaClass);
                 metaObj.AcceptChanges(CatalogContext.MetaDataContext);
             }
         }
