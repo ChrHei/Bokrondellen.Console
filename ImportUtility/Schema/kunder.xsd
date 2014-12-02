@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="kund">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" />
+              <xs:element name="typ" />
+              <xs:element name="ref_id" />
+              <xs:element name="namn" />
+              <xs:element name="kortnamn" />
+              <xs:element name="gln" />
+              <xs:element name="avtal_ref" />
+              <xs:element name="adress1" />
+              <xs:element name="adress2" />
+              <xs:element name="adress3" />
+              <xs:element name="postnummer" />
+              <xs:element name="ort" />
+              <xs:element name="landkod" />
+              <xs:element name="box_postnummer" />
+              <xs:element name="box_postort" />
+              <xs:element name="box_landkod" />
+              <xs:element name="telefon" />
+              <xs:element name="fax" />
+              <xs:element name="epost" />
+              <xs:element name="epost_teknik" />
+              <xs:element name="organisationsnamn" />
+              <xs:element name="organisationsnummer" />
+              <xs:element name="kedja" />
+              <xs:element name="ansvarig" />
+              <xs:element name="hemsida" />
+              <xs:element name="bankgiro" />
+              <xs:element name="postgiro" />
+              <xs:element name="saljorganisation" />
+              <xs:element name="saljorganisation_tel" />
+              <xs:element name="returgodsadress1" />
+              <xs:element name="returgodsadress2" />
+              <xs:element name="returgodsadress3" />
+              <xs:element name="receive_orders" />
+              <xs:element name="prisskala" />
+              <xs:element name="psykologisk" />
+              <xs:element name="seelignummer" />
+              <xs:element name="leveransvillkor" />
+              <xs:element name="last_login" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

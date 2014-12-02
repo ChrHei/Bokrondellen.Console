@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <mediatyp name="Bok" allowtext="false">
+    <bandtyp>Board book</bandtyp>
+    <bandtyp>Danskt band</bandtyp>
+    <bandtyp>Flexband</bandtyp>
+    <bandtyp>Halvfranskt</bandtyp>
+    <bandtyp>Häftad</bandtyp>
+    <bandtyp>Inbunden</bandtyp>
+    <bandtyp>Kartonnage</bandtyp>
+    <bandtyp>Pocket</bandtyp>
+    <bandtyp>Spiral</bandtyp>
+    <bandtyp>Storpocket</bandtyp>
+    <bandtyp>Övrigt</bandtyp>
+  </mediatyp>
+  <mediatyp name="Ljudbok" allowtext="false">
+    <bandtyp>CD-skiva</bandtyp>
+    <bandtyp>DVD</bandtyp>
+    <bandtyp>Kassettbok</bandtyp>
+    <bandtyp>MP3 CD</bandtyp>
+    <bandtyp>MP3-spelare med fil</bandtyp>
+    <bandtyp>Minneskort</bandtyp>
+    <bandtyp>Minneskort med USB-adapter</bandtyp>
+  </mediatyp>
+  <mediatyp name="Multimedia" allowtext="false">
+    <bandtyp>CD Mac</bandtyp>
+    <bandtyp>CD PC</bandtyp>
+    <bandtyp>CD PC/Mac</bandtyp>
+    <bandtyp>DVD Mac</bandtyp>
+    <bandtyp>DVD PC</bandtyp>
+    <bandtyp>DVD PC/Mac</bandtyp>
+  </mediatyp>
+  <mediatyp name="Nedladdningsbar bok" allowtext="false" >
+    <bandtyp>MP3-fil</bandtyp>
+    <bandtyp>E-Bok</bandtyp>
+  </mediatyp>
+  <mediatyp name="Karta" allowtext="false">
+    <bandtyp>Falsad</bandtyp>
+    <bandtyp>Rullad</bandtyp>
+    <bandtyp>Kartblad</bandtyp>
+    <bandtyp>Jordglob</bandtyp>
+    <bandtyp>Övrigt</bandtyp>
+  </mediatyp>
+  <mediatyp name="Marknadsföringsmaterial" allowtext="true" />
+  <mediatyp name="Övrigt" allowtext="true" />
+  <mediatyp name="Merchandise" allowtext="true" />
+  <mediatyp name="Tidskrift" allowtext="true" />
+  <mediatyp name="Onlineprodukt" allowtext="true" />
+</root>

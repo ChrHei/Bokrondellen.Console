@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root>
+	<thema kod="A">
+		<rubrik>Konst</rubrik>
+		<genre>
+			<kod>kons</kod>
+			<rubrik>Konst</rubrik>
+		</genre>
+		<varugrupp>021</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="AJ">
+		<rubrik>Fotografi</rubrik>
+		<genre>
+			<kod>fifo</kod>
+			<rubrik>Film och fotografi</rubrik>
+		</genre>
+		<varugrupp>020</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="AM">
+		<rubrik>Arkitektur</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>021</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="ATD">
+		<rubrik>Teater</rubrik>
+		<genre>
+			<kod>teat</kod>
+			<rubrik>Teater</rubrik>
+		</genre>
+		<varugrupp>019</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="ATF">
+		<rubrik>Film</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>020</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="ATQ">
+		<rubrik>Dans</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>018</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="AV">
+		<rubrik>Musik</rubrik>
+		<genre>
+			<kod>musi</kod>
+			<rubrik>Musik</rubrik>
+		</genre>
+		<varugrupp>018</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="C">
+		<rubrik>Språk och lingvistik</rubrik>
+		<genre>
+			<kod>spor</kod>
+			<rubrik>Språk</rubrik>
+		</genre>
+		<varugrupp>024</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="CBD">
+		<rubrik>Lexikon</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>024</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="DC">
+		<rubrik>Lyrik</rubrik>
+		<genre>
+			<kod>lyri</kod>
+			<rubrik>Lyrik</rubrik>
+		</genre>
+		<varugrupp>007</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="DD">
+		<rubrik>Dramatik</rubrik>
+		<genre>
+			<kod>dram</kod>
+			<rubrik>Dramatik</rubrik>
+		</genre>
+		<varugrupp>008</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="DN">
+		<rubrik>Biografier</rubrik>
+		<genre>
+			<kod>memo</kod>
+			<rubrik>Memoarer och biografier</rubrik>
+		</genre>
+		<varugrupp>013</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="DNL">
+		<rubrik>Essäer</rubrik>
+		<genre>
+			<kod>esse</kod>
+			<rubrik>Essäer</rubrik>
+		</genre>
+		<varugrupp>002</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="DS">
+		<rubrik>Litteraturvetenskap</rubrik>
+		<genre>
+			<kod>litt</kod>
+			<rubrik>Litteraturvetenskap</rubrik>
+		</genre>
+		<varugrupp>023</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FB">
+		<rubrik>Skönlitteratur: allmänt</rubrik>
+		<genre>
+			<kod>spas</kod>
+			<rubrik>Skönlitteratur på andra språk</rubrik>
+		</genre>
+		<varugrupp>012</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FB">
+		<rubrik>Skönlitteratur: allmänt</rubrik>
+		<genre>
+			<kod>nove</kod>
+			<rubrik>Noveller</rubrik>
+		</genre>
+		<varugrupp>003</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FB">
+		<rubrik>Skönlitteratur: allmänt</rubrik>
+		<genre>
+			<kod>svsk</kod>
+			<rubrik>Svensk skönlitteratur</rubrik>
+		</genre>
+		<varugrupp>003</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FB">
+		<rubrik>Skönlitteratur: allmänt</rubrik>
+		<genre>
+			<kod>utsk</kod>
+			<rubrik>Utländsk skönlitteratur</rubrik>
+		</genre>
+		<varugrupp>004</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FF">
+		<rubrik>Deckare</rubrik>
+		<genre>
+			<kod>dets</kod>
+			<rubrik>Deckare, thrillers och spänning</rubrik>
+		</genre>
+		<varugrupp>005</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FH">
+		<rubrik>Thrillers</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>005</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FL">
+		<rubrik>Science fiction</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>006</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FM">
+		<rubrik>Fantasy</rubrik>
+		<genre>
+			<kod>fasf</kod>
+			<rubrik>Fantasy och science fiction</rubrik>
+		</genre>
+		<varugrupp>006</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FU">
+		<rubrik>Humoristisk skönlitteratur</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>003</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="FV">
+		<rubrik>Historisk skönlitteratur</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>003</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="GB">
+		<rubrik>Uppslagsverk och referensverk</rubrik>
+		<genre>
+			<kod>upps</kod>
+			<rubrik>Uppslagsböcker mm.</rubrik>
+		</genre>
+		<varugrupp>059</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="GBCQ">
+		<rubrik>Citatsamlingar</rubrik>
+		<genre>
+			<kod>ciaf</kod>
+			<rubrik>Citatsamlingar och aforismer</rubrik>
+		</genre>
+		<varugrupp>011</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="J">
+		<rubrik>Samhälle och politik</rubrik>
+		<genre>
+			<kod>sapd</kod>
+			<rubrik>Samhälle, politik och debatt</rubrik>
+		</genre>
+		<varugrupp>041</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="JBCT">
+		<rubrik>Media, kommunikation</rubrik>
+		<genre>
+			<kod>meko</kod>
+			<rubrik>Media och kommunikation</rubrik>
+		</genre>
+		<varugrupp>040</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="JM">
+		<rubrik>Psykologi</rubrik>
+		<genre>
+			<kod>psyk</kod>
+			<rubrik>Psykologi</rubrik>
+		</genre>
+		<varugrupp>038</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="JN">
+		<rubrik>Pedagogik</rubrik>
+		<genre>
+			<kod>peda</kod>
+			<rubrik>Pedagogik</rubrik>
+		</genre>
+		<varugrupp>039</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="JW">
+		<rubrik>Militärväsen, vapen</rubrik>
+		<genre>
+			<kod>miva</kod>
+			<rubrik>Militärväsen och vapen</rubrik>
+		</genre>
+		<varugrupp>042</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="K">
+		<rubrik>Ekonomi</rubrik>
+		<genre>
+			<kod>ekon</kod>
+			<rubrik>Ekonomi</rubrik>
+		</genre>
+		<varugrupp>043</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="KJ">
+		<rubrik>Management</rubrik>
+		<genre>
+			<kod>mana</kod>
+			<rubrik>Management</rubrik>
+		</genre>
+		<varugrupp>044</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="L">
+		<rubrik>Juridik</rubrik>
+		<genre>
+			<kod>juri</kod>
+			<rubrik>Juridik</rubrik>
+		</genre>
+		<varugrupp>045</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="M">
+		<rubrik>Medicin</rubrik>
+		<genre>
+			<kod>medi</kod>
+			<rubrik>Medicin</rubrik>
+		</genre>
+		<varugrupp>035</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="N">
+		<rubrik>Historia och arkeologi</rubrik>
+		<genre>
+			<kod>hiar</kod>
+			<rubrik>Historia &amp; arkeologi</rubrik>
+		</genre>
+		<varugrupp>014</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="NHTB">
+		<rubrik>Kulturhistoria</rubrik>
+		<genre>
+			<kod>kult</kod>
+			<rubrik>Kulturhistoria</rubrik>
+		</genre>
+		<varugrupp>015</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="PB">
+		<rubrik>Matematik</rubrik>
+		<genre>
+			<kod>mast</kod>
+			<rubrik>Matematik</rubrik>
+		</genre>
+		<varugrupp>033</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="PD">
+		<rubrik>Naturvetenskap</rubrik>
+		<genre>
+			<kod>natu</kod>
+			<rubrik>Naturvetenskap</rubrik>
+		</genre>
+		<varugrupp>027</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="PH">
+		<rubrik>Fysik</rubrik>
+		<genre>
+			<kod>fysi</kod>
+			<rubrik>Fysik</rubrik>
+		</genre>
+		<varugrupp>031</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="PN">
+		<rubrik>Kemi</rubrik>
+		<genre>
+			<kod>kemi</kod>
+			<rubrik>Kemi</rubrik>
+		</genre>
+		<varugrupp>028</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="QD">
+		<rubrik>Filosofi</rubrik>
+		<genre>
+			<kod>fiid</kod>
+			<rubrik>Filosofi</rubrik>
+		</genre>
+		<varugrupp>017</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="QR">
+		<rubrik>Religion</rubrik>
+		<genre>
+			<kod>reli</kod>
+			<rubrik>Religion</rubrik>
+		</genre>
+		<varugrupp>016</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="RG">
+		<rubrik>Geografi</rubrik>
+		<genre>
+			<kod>geog</kod>
+			<rubrik>Geografi</rubrik>
+		</genre>
+		<varugrupp>025</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="RN">
+		<rubrik>Miljö</rubrik>
+		<genre>
+			<kod>milj</kod>
+			<rubrik>Miljö</rubrik>
+		</genre>
+		<varugrupp>051</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="S">
+		<rubrik>Sport</rubrik>
+		<genre>
+			<kod>spmf</kod>
+			<rubrik>Sport, motion och friluftsliv</rubrik>
+		</genre>
+		<varugrupp>058</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="SV">
+		<rubrik>Jakt och fiske</rubrik>
+		<genre>
+			<kod>jafi</kod>
+			<rubrik>Jakt och fiske</rubrik>
+		</genre>
+		<varugrupp>050</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="T">
+		<rubrik>Teknik</rubrik>
+		<genre>
+			<kod>tekn</kod>
+			<rubrik>Teknik</rubrik>
+		</genre>
+		<varugrupp>032</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="TV">
+		<rubrik>Lantbruk och skogsbruk</rubrik>
+		<genre>
+			<kod>josk</kod>
+			<rubrik>Jord &amp; skogsbruk</rubrik>
+		</genre>
+		<varugrupp>052</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="U">
+		<rubrik>Datorer och IT</rubrik>
+		<genre>
+			<kod>itit</kod>
+			<rubrik>Datorer och IT</rubrik>
+		</genre>
+		<varugrupp>034</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WB">
+		<rubrik>Kokböcker</rubrik>
+		<genre>
+			<kod>madr</kod>
+			<rubrik>Mat och dryck</rubrik>
+		</genre>
+		<varugrupp>053</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WD">
+		<rubrik>Spel</rubrik>
+		<genre>
+			<kod>spel</kod>
+			<rubrik>Spel</rubrik>
+		</genre>
+		<varugrupp>057</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="VF">
+		<rubrik>Familj och hälsa</rubrik>
+		<genre>
+			<kod>hsks</kod>
+			<rubrik>Hälsa, skönhet och samlevnad</rubrik>
+		</genre>
+		<varugrupp>036</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WF">
+		<rubrik>Hantverk och hobby</rubrik>
+		<genre>
+			<kod>haho</kod>
+			<rubrik>Hantverk och hobby</rubrik>
+		</genre>
+		<varugrupp>056</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WFB">
+		<rubrik>Sömnad &amp; handarbete</rubrik>
+		<genre>
+			<kod>soha</kod>
+			<rubrik>Sömnad och handarbete</rubrik>
+		</genre>
+		<varugrupp>055</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WH">
+		<rubrik>Humor</rubrik>
+		<genre>
+			<kod>huka</kod>
+			<rubrik>Humor och kåserier</rubrik>
+		</genre>
+		<varugrupp>009</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WK">
+		<rubrik>Hus och hem</rubrik>
+		<genre>
+			<kod>huhe</kod>
+			<rubrik>Hus och hem</rubrik>
+		</genre>
+		<varugrupp>054</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WM">
+		<rubrik>Trädgård</rubrik>
+		<genre>
+			<kod>trad</kod>
+			<rubrik>Trädgård</rubrik>
+		</genre>
+		<varugrupp>047</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WM">
+		<rubrik>Djur och natur</rubrik>
+		<genre>
+			<kod>vaxt</kod>
+			<rubrik>Växter</rubrik>
+		</genre>
+		<varugrupp>046</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WN">
+		<rubrik>Djur och natur</rubrik>
+		<genre>
+			<kod>vidj</kod>
+			<rubrik>Vilda djur</rubrik>
+		</genre>
+		<varugrupp>048</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WNG">
+		<rubrik>Husdjur</rubrik>
+		<genre>
+			<kod>hudj</kod>
+			<rubrik>Husdjur</rubrik>
+		</genre>
+		<varugrupp>049</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="VS">
+		<rubrik>Personlig utveckling</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>036</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WT">
+		<rubrik>Resor</rubrik>
+		<genre>
+			<kod>reso</kod>
+			<rubrik>Resor</rubrik>
+		</genre>
+		<varugrupp>025</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WTR">
+		<rubrik>Kartor</rubrik>
+		<genre>
+			<kod>kart</kod>
+			<rubrik>Kartor</rubrik>
+		</genre>
+		<varugrupp>026</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="VX">
+		<rubrik>Ande, kropp och själ</rubrik>
+		<genre>
+			<kod>ases</kod>
+			<rubrik>Astrologi och esoterika</rubrik>
+		</genre>
+		<varugrupp>037</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="WZS">
+		<rubrik>Övrigt</rubrik>
+		<genre>
+			<kod>ovri</kod>
+			<rubrik>Övrigt</rubrik>
+		</genre>
+		<varugrupp>060</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="X">
+		<rubrik>Tecknade serier och grafiska romaner</rubrik>
+		<genre>
+			<kod>sesk</kod>
+			<rubrik>Serier och skämtteckningar</rubrik>
+		</genre>
+		<varugrupp>010</varugrupp>
+		<barnvuxen>V</barnvuxen>
+	</thema>
+	<thema kod="YBC">
+		<rubrik>Bilderböcker</rubrik>
+		<genre>
+			<kod>bibo</kod>
+			<rubrik>Bilderböcker</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YBG">
+		<rubrik>Pysselböcker, målarböcker och leksaksböcker</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YD">
+		<rubrik>Barn och ungdom: Poesi och antologier</rubrik>
+		<genre>
+			<kod>boes</kod>
+			<rubrik>Poesi</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFB">
+		<rubrik>Skönlitteratur barn och ungdom: Allmänt</rubrik>
+		<genre>
+			<kod>sbou</kod>
+			<rubrik>Skönlitteratur</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFC">
+		<rubrik>Skönlitteratur barn och ungdom: Äventyrsböcker och deckare</rubrik>
+		<genre>
+			<kod>bets</kod>
+			<rubrik>Deckare, spänning, äventyr</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFD">
+		<rubrik>Skönlitteratur barn och ungdom: Rysare</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFG">
+		<rubrik>Skönlitteratur barn och ungdom: Science fiction</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFH">
+		<rubrik>Skönlitteratur barn och ungdom: Fantasy och magisk realism</rubrik>
+		<genre>
+			<kod>basf</kod>
+			<rubrik>Fantasy</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFM">
+		<rubrik>Skönlitteratur barn och ungdom: Kärlek och relationer</rubrik>
+		<genre>
+			<kod>brom</kod>
+			<rubrik>Romantik</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFP">
+		<rubrik>Skönlitteratur barn och ungdom: Djurberättelser, hästböcker</rubrik>
+		<genre>
+			<kod>bast</kod>
+			<rubrik>Hästböcker</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFQ">
+		<rubrik>Skönlitteratur barn och ungdom: Roliga berättelser</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFR">
+		<rubrik>Skönlitteratur barn och ungdom: Sportberättelser</rubrik>
+		<genre>
+			<kod>bspo</kod>
+			<rubrik>Sportberättelser</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFT">
+		<rubrik>Skönlitteratur barn och ungdom: Historiska berättelser</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YFY">
+		<rubrik>Skönlitteratur barn och ungdom: Sanna berättelser i skönlitterär form</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bons</kod>
+			<rubrik>Konst</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bdra</kod>
+			<rubrik>Dramatik och teater</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bans</kod>
+			<rubrik>Dans</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>btvf</kod>
+			<rubrik>TV och film</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bist</kod>
+			<rubrik>Historia</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bsam</kod>
+			<rubrik>Arbete</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YN">
+		<rubrik>Faktaböcker barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bann</kod>
+			<rubrik>Människor</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNC">
+		<rubrik>Faktaböcker barn och ungdom: Musik</rubrik>
+		<genre>
+			<kod>busi</kod>
+			<rubrik>musik</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNM">
+		<rubrik>Faktaböcker barn och ungdom: Folk och länder</rubrik>
+		<genre>
+			<kod>beog</kod>
+			<rubrik>geografi</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNN">
+		<rubrik>Faktaböcker barn och ungdom: Djur och natur</rubrik>
+		<genre>
+			<kod>batu</kod>
+			<rubrik>Naturen och djur</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNNA">
+		<rubrik>Faktaböcker barn och ungdom: Urtiden och dinosaurer</rubrik>
+		<genre>
+			<kod>brti</kod>
+			<rubrik>Urtiden, dinosaurier</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNNH">
+		<rubrik>Faktaböcker barn och ungdom: Husdjur</rubrik>
+		<genre>
+			<kod>batu</kod>
+			<rubrik>Naturen och djur</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNNZ">
+		<rubrik>Faktaböcker barn och ungdom:  Rymden</rubrik>
+		<genre>
+			<kod>brym</kod>
+			<rubrik>Rymden</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNP">
+		<rubrik>Faktaböcker barn och ungdom: Hobby och hantverk</rubrik>
+		<genre>
+			<kod>btra</kod>
+			<rubrik>Trädgård</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNP">
+		<rubrik>Faktaböcker barn och ungdom: Hobby och hantverk</rubrik>
+		<genre>
+			<kod>bkon</kod>
+			<rubrik>Ekonomi</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNP">
+		<rubrik>Faktaböcker barn och ungdom: Hobby och hantverk</rubrik>
+		<genre>
+			<kod>bant</kod>
+			<rubrik>Hantverk och handarbete</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNPC">
+		<rubrik>Faktaböcker barn och ungdom: Matlagning</rubrik>
+		<genre>
+			<kod>bmat</kod>
+			<rubrik>Mat</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNT">
+		<rubrik>Faktaböcker barn och ungdom: Naturvetenskap och teknik</rubrik>
+		<genre>
+			<kod>bnat</kod>
+			<rubrik>Naturvetenskap och teknik</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNU">
+		<rubrik>Barn och ungdom:  Humor</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNUC">
+		<rubrik>Barn och ungdom:  Tecknade serier</rubrik>
+		<genre>
+			<kod>bhum</kod>
+			<rubrik>Humor och tecknat</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNUC">
+		<rubrik/>
+		<genre>
+			<kod>mang</kod>
+			<rubrik>Manga</rubrik>
+		</genre>
+		<varugrupp>061</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNV">
+		<rubrik>Faktaböcker barn och ungdom:  Spel, lekar och frågesport</rubrik>
+		<genre>
+			<kod>bhob</kod>
+			<rubrik>Hobby, spel och lekar</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNW">
+		<rubrik>Faktaböcker barn och ungdom:  Sport och friluftsaktiviteter</rubrik>
+		<genre>
+			<kod>bidr</kod>
+			<rubrik>Idrott, friluftsaktiviteter</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YNX">
+		<rubrik>Faktaböcker barn och ungdom:  Mysterier och övernaturligt</rubrik>
+		<genre>
+			<kod>bove</kod>
+			<rubrik>Övernaturligt, mysterier</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YP">
+		<rubrik>Läromedel</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YR">
+		<rubrik>Referensverk barn och ungdom</rubrik>
+		<genre>
+			<kod>bord</kod>
+			<rubrik>Ordböcker, referensmaterial</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YRW">
+		<rubrik>Referensverk barn och ungdom: Atlaser och kartor</rubrik>
+		<genre>
+			<kod>bkar</kod>
+			<rubrik>Kartor</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bsex</kod>
+			<rubrik>Sexualitet och relationer</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bdod</kod>
+			<rubrik>Dödsfall och sorg</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bdro</kod>
+			<rubrik>Droger och missbruk</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bhan</kod>
+			<rubrik>Handikapp</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bras</kod>
+			<rubrik>Rasism</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YX">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Övrigt</rubrik>
+		<genre>
+			<kod>bsko</kod>
+			<rubrik>Skolan</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXA">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Kropp och hälsa</rubrik>
+		<genre>
+			<kod>bkro</kod>
+			<rubrik>Kropp och hälsa</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXD">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Självkänsla och självförtroende</rubrik>
+		<genre>
+			<kod>bsja</kod>
+			<rubrik>Självkänsla</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXF">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Familjen</rubrik>
+		<genre>
+			<kod>bfam</kod>
+			<rubrik>Familj</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXQ">
+		<rubrik>Personliga och sociala frågor barn och ungdom: Mobbning, våld och övergrepp</rubrik>
+		<genre>
+			<kod>bmob</kod>
+			<rubrik>Mobbing</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXZ">
+		<rubrik>Faktaböcker barn och ungdom: Samhällsfrågor och miljöfrågor</rubrik>
+		<genre>
+			<kod>bsoc</kod>
+			<rubrik>Sociala frågor</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YXZ">
+		<rubrik>Faktaböcker barn och ungdom: Samhällsfrågor och miljöfrågor</rubrik>
+		<genre>
+			<kod>bmil</kod>
+			<rubrik>Miljön</rubrik>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YZ">
+		<rubrik>Pappersvaror, merchendise etc.</rubrik>
+		<genre>
+			<kod>bkal</kod>
+			<rubrik>Kalendrar, skrivmaterial</rubrik>
+		</genre>
+		<varugrupp>060</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+	<thema kod="YZG">
+		<rubrik>Presentböcker för barn</rubrik>
+		<genre>
+			<kod/>
+			<rubrik/>
+		</genre>
+		<varugrupp>062</varugrupp>
+		<barnvuxen>B</barnvuxen>
+	</thema>
+</root>

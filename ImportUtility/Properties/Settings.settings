@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SYSteam.ImportUtility.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DataFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">..\..\DataFiles</Value>
+    </Setting>
+    <Setting Name="ApplicationName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bokrondellen (CommerceManager)</Value>
+    </Setting>
+    <Setting Name="ApplicationId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">4B06BF0F-7AC2-492D-AF60-8610CC5957B5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

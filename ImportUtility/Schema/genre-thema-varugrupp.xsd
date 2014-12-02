@@ -1,0 +1,26 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="root">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" maxOccurs="unbounded" name="thema">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element minOccurs="1" type="xsd:string" name="rubrik" />
+              <xsd:element minOccurs="0" name="genre">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element minOccurs="0" type="xsd:string" name="kod" />
+                    <xsd:element minOccurs="0" type="xsd:string" name="rubrik" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+              <xsd:element minOccurs="0" type="xsd:string" name="varugrupp" />
+              <xsd:element minOccurs="0" type="xsd:string" name="barnvuxen" />
+            </xsd:sequence>
+            <xsd:attribute name="kod" type="xsd:string" use="required" />
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
