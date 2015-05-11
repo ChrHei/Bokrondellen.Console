@@ -108,13 +108,15 @@ namespace Bokrondellen.ImportUtility
                     {
                         try
                         {
-                            Console.WriteLine("Press 'Y' to create mappings between thema, genre and commodity group.");
-                            if (Console.ReadKey(true).Key == ConsoleKey.Y)
-                                CreateGenreThemaCommodityGroupMappings();
-
                             Console.WriteLine("Press 'Y' to create Thema entries");
                             if (Console.ReadKey(true).Key == ConsoleKey.Y)
                                 CreateThema();
+                            Console.WriteLine("Press 'Y' to create commodity groups");
+                            if (Console.ReadKey(true).Key == ConsoleKey.Y)
+                                CreateCommodityGroups();
+                            Console.WriteLine("Press 'Y' to create mappings between thema, genre and commodity group.");
+                            if (Console.ReadKey(true).Key == ConsoleKey.Y)
+                                CreateGenreThemaCommodityGroupMappings();
 
                             Console.WriteLine("Press 'Y' to create Accounts");
                             if (Console.ReadKey(true).Key == ConsoleKey.Y)
@@ -127,9 +129,6 @@ namespace Bokrondellen.ImportUtility
                             Console.WriteLine("Press 'Y' to create BIC entries");
                             if (Console.ReadKey(true).Key == ConsoleKey.Y)
                                 CreateBICEntries();
-                            Console.WriteLine("Press 'Y' to create commodity groups");
-                            if (Console.ReadKey(true).Key == ConsoleKey.Y)
-                                CreateCommodityGroups();
                             Console.WriteLine("Press 'Y' to create genres");
                             if (Console.ReadKey(true).Key == ConsoleKey.Y)
                                 CreateGenres();
@@ -280,7 +279,7 @@ namespace Bokrondellen.ImportUtility
         {
             Console.WriteLine("Loading XML document for Thema");
 
-            XDocument doc = XDocument.Load(Path.GetFullPath(Path.Combine(Properties.Settings.Default.DataFolder, "thema.xml")));
+            XDocument doc = XDocument.Load(Path.GetFullPath(Path.Combine(Properties.Settings.Default.DataFolder, "thema-150511-bokronddb01vm.xml")));
 
             Console.WriteLine("Document contains {0} rows", doc.Root.Elements().Count());
 
